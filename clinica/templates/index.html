@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Turnos - Clínica</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        Sistema de Gestión de Turnos - Clínica
+        <div class="logout-btn">
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Cerrar Sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'registrar_paciente' %}">Registrar Paciente</a></li>
+            <li><a href="{% url 'asignar_turno' %}">Asignar Turno</a></li>
+            <li><a href="{% url 'reprogramar_turno' %}">Reprogramar Turno</a></li>
+            <li><a href="{% url 'generar_reportes' %}">Generar Reportes</a></li>
+        </ul>
+    </nav>
+
+    <h1>Bienvenido</h1>
+    <p>Selecciona una opción en el menú para gestionar turnos en la clínica.</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reprogramar Turno</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Formulario para Reprogramar Turno</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="turno_id">Seleccionar Turno:</label>
+        <select name="turno_id" required>
+            <option value="">-- Seleccione un Turno --</option>
+            {% for turno in turnos %}
+                <option value="{{ turno.id }}">
+                    {{ turno.paciente.nombre }} - {{ turno.medico.nombre }} ({{ turno.fecha }} {{ turno.hora }})
+                </option>
+            {% endfor %}
+        </select><br>
+
+        <label for="fecha">Nueva Fecha:</label>
+        <input type="date" name="fecha" required><br>
+
+        <label for="hora">Nueva Hora:</label>
+        <input type="time" name="hora" required><br>
+
+        <button type="submit">Reprogramar Turno</button>
+    </form>
+    <a href="{% url 'index' %}" class="back-link">Volver al Inicio</a>
+</body>
+</html>

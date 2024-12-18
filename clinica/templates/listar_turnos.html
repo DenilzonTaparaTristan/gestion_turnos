@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Turnos</title>
+</head>
+<body>
+    <h1>Listado de Turnos</h1>
+    <table border="1">
+        <tr>
+            <th>Paciente</th>
+            <th>Médico</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+        </tr>
+        {% for turno in turnos %}
+        <tr>
+            <td>{{ turno.paciente.nombre }} {{ turno.paciente.apellidos }}</td>
+            <td>{{ turno.medico.nombre }} ({{ turno.medico.especialidad }})</td>
+            <td>{{ turno.fecha }}</td>
+            <td>{{ turno.hora }}</td>
+            <td>{{ turno.estado }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'index' %}">Volver al Inicio</a>
+</body>
+</html>
+

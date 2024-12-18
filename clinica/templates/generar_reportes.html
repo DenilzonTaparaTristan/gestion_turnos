@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>Generar Reportes</header>
+    <h1>Resumen de Turnos</h1>
+    <table>
+        <tr>
+            <th>Estado</th>
+            <th>Total</th>
+        </tr>
+        {% for reporte in reportes %}
+        <tr>
+            <td>{{ reporte.estado }}</td>
+            <td>{{ reporte.total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'index' %}">Volver al Inicio</a>
+</body>
+</html>
